@@ -1,0 +1,79 @@
+/* General */
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    color: #353535;
+}
+
+.headline {
+    text-align: center;
+}
+
+/* Header */
+header {
+    width: 35vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    left: 2vw;
+}
+
+header #selectMonth {
+    width: 15vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    font-size: 1.5vw;
+}
+
+header #selectMonth #arrowWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header #selectMonth #arrowWrapper i {
+    margin: 0 .75vmin;
+    cursor: pointer;
+    user-select: none;
+}
+
+header #selectMonth h1 {
+    margin: 0;
+}
+
+/* Table */
+#tableWrapper {
+    width: 80vw;
+    height: 92vh;
+    border: #dadce0 1px solid;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.table {
+
+}
+
+/* Overview */
+#overview {
+    width: 20vw;
+    height: 92vh;
+    border-top: #dadce0 1px solid;
+    border-bottom: #dadce0 1px solid;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
