@@ -18,7 +18,11 @@ class Month {
         let startDate;
 
         const firstDayOfMonth = new Date(this.year, this.month - 1, 1);
-        const firstWeekDayOfMonth = getWeekDay(firstDayOfMonth);
+        let firstWeekDayOfMonth = getWeekDay(firstDayOfMonth);
+
+        if (firstWeekDayOfMonth === 0) {
+            firstWeekDayOfMonth = 7;
+        }
         
         const daysOfPrevoiusMonth = 7 - (weekDays.length - firstWeekDayOfMonth) - 1;
         const lastDaysOfPreviousMonth = [];
@@ -35,7 +39,10 @@ class Month {
         let row = document.createElement('div');
         row.classList.add('row');
 
-        for (let i = 0; i < previousMonth.getDate() + weekDays.length; i++) {
+        // for (let i = 0; i < previousMonth.getDate() + weekDays.length; i++) {
+        let currentDate = new Date(this.year, this.month, 0);
+
+        for (let i = 0; i < currentDate.getDate() + weekDays.length + daysOfPrevoiusMonth; i++) {
             const weekDay = weekDays[i];
 
             const tableCell = document.createElement('div');
