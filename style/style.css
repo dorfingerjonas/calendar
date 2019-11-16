@@ -10,28 +10,32 @@ body {
 }
 
 .headline {
+    font-size: 1.3vw;
     text-align: center;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 /* Header */
 header {
-    width: 35vw;
+    width: 40vw;
     height: 8vh;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     flex-direction: row;
     position: relative;
     left: 2vw;
+    font-size: 1.5vw;
 }
 
 header #selectMonth {
-    width: 15vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    font-size: 1.5vw;
 }
 
 header #selectMonth #arrowWrapper {
@@ -41,20 +45,40 @@ header #selectMonth #arrowWrapper {
 }
 
 header #selectMonth #arrowWrapper i {
-    margin: 0 .75vmin;
+    margin: 0 1vmin;
     cursor: pointer;
     user-select: none;
+    font-size: 2vmin;
+    border-radius: 100%;
+    padding: 1.4vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2vmin;
+    height: 2vmin;
+    transition: background-color 300ms ease-in-out;
 }
 
-header #selectMonth h1 {
+header #selectMonth #arrowWrapper i:hover {
+    background-color: #d3d3d333;
+}
+
+header #selectMonth #arrowWrapper i:active {
+    background-color: lightgray;
+}
+
+header h1 {
     margin: 0;
+    font-size: 2.3vw;
+    margin-right: 10vw;
 }
 
 /* Table */
 #tableWrapper {
     width: 80vw;
     height: 92vh;
-    border: #dadce0 1px solid;
+    border: #dadce0 1.5px solid;
+    border-right: none;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -62,18 +86,151 @@ header #selectMonth h1 {
 }
 
 .table {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 200ms ease-in-out;
+}
 
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tableCell {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: #dadce0 1px solid;
+    border-right: #dadce0 1px solid;
+}
+
+.dateInfoWrapper {
+    width: 100%;
+    margin: .5vh 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: .9vw;
+}
+
+.dateInfoWrapper .dayOfMonth {
+    width: 3.5vmin;
+    height: 3.5vmin;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 300ms ease-in-out;
+}
+
+.dateInfoWrapper .dayOfMonth:hover {
+    background: #dadce093;
+}
+
+.dateInfoWrapper .currentDay {
+    /* background: #41ab6b; */
+    background: #166ba2;
+    color: white;
+}
+
+.dateInfoWrapper .currentDay:hover {
+    background: #41ab6b;
+    color: white;
+}
+
+.lastOrNextMonth {
+    color: #9a9a9a;
+}
+
+.termAllDay {
+    background: #0091f2;
+    color: white;
+    font-size: .9vw;
+    width: 80%;
+    padding: .5vh 5%;
+    margin-top: .5vh;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 300ms ease-in-out;
+}
+
+.termAllDay:hover {
+    background: #166ba2;
+}
+
+.termTime {
+    background: transparent;
+    color: #353535;
+    font-size: .9vw;
+    width: 80%;
+    padding: .5vh 5%;
+    margin-top: .5vh;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 300ms ease-in-out;
+}
+
+.termTime:hover {
+    background:#ecedef;
+}
+
+.termTime .termCircle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #0091f2;
+    margin: 0 .3vw 0 0;
+}
+
+.termTime strong {
+    margin: 0 0 0 .5vw;
 }
 
 /* Overview */
 #overview {
     width: 20vw;
     height: 92vh;
-    border-top: #dadce0 1px solid;
-    border-bottom: #dadce0 1px solid;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-top: #dadce0 1.5px solid;
+    border-bottom: #dadce0 1.5px solid;
     position: absolute;
     left: 0;
     bottom: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
+.overviewTerm {
+    width: 80%;
+    background: #fce364;
+    border-radius: 10px;
+    margin: 1.5vh 0;
+    padding: 0 2.5%;
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 5px 15px 0px;
+}
+
+.overviewSubject {
+    font-weight: bold;
+}
+
+.overviewTerm p {
+    margin: 1vh;
+}
+
+.error {
+
+}
