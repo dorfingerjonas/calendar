@@ -283,3 +283,10 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/linux,macos,windows,webstorm,phpstorm,jetbrains,visualstudiocode
+.idea/calendar.iml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/modules.xml
+PHP_08_Uebung_Arrays_Kalender.pdf
+Screenshot__Kalender_Thunderbird.jpg
+Screenshot_moegliches_Ergebnis.jpg
