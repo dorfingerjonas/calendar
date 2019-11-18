@@ -5,7 +5,7 @@ class Calendar {
         this.response = response;
     }
 
-    init() {       
+    init() {
         const displayMonth = document.querySelector('#displayMonth');
         month = new Month(new Date().getMonth() + 1, new Date().getFullYear());
         displayMonth.textContent = getMonthFullName(month.getDate().getMonth() + 1) + ' ' + month.getDate().getFullYear();
