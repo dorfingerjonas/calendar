@@ -135,14 +135,13 @@ header h1 {
 }
 
 .dateInfoWrapper .currentDay {
-    /* background: #41ab6b; */
-    background: #166ba2;
+    background: #1a73e8;
     color: white;
 }
 
 .dateInfoWrapper .currentDay:hover {
-    background: #41ab6b;
     color: white;
+    background: #1a73e8;
 }
 
 .lastOrNextMonth {
@@ -216,7 +215,8 @@ header h1 {
 
 .overviewTerm {
     width: 80%;
-    background: #fce364;
+    background: #5e9def;
+    color: white;
     border-radius: 10px;
     margin: 1.5vh 0;
     padding: 0 2.5%;
