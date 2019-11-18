@@ -50,7 +50,7 @@ class Month {
             const dateText = document.createElement('span');
             
             if (i < 7) {
-                const weekDayText = document.createElement('span');
+                const weekDayText = document.createElement('strong');
                 weekDayText.textContent = weekDay;
                 dateInfoWrapper.appendChild(weekDayText);
             }
