@@ -83,9 +83,13 @@ class Calendar {
     }
 
     showCreateWindow() {
+        document.querySelector('#addTermWrapper').classList.remove('hide');
         document.querySelector('#createTermContainer').classList.remove('hide');
-        document.querySelector('#calendarWrapper').classList.add('lowOpacity');
-        document.querySelector('#addTermWrapper').classList.add('showCreateWindow');
+
+        setTimeout(() => {
+            document.querySelector('#calendarWrapper').classList.add('lowOpacity');
+            document.querySelector('#addTermWrapper').classList.add('showCreateWindow');
+        }, 25);
 
         handleCheckbox();
     }
@@ -97,6 +101,7 @@ class Calendar {
 
         setTimeout(() => {
             initInputValues();
+            document.querySelector('#addTermWrapper').classList.add('hide');
         }, 110);
     }
 
