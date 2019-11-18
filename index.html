@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <title>Kalendar</title>
+    <title>Kalender</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./script/script.js"></script>
     <script src="./script/Month.js"></script>
@@ -13,23 +13,69 @@
     <script src="https://kit.fontawesome.com/e7df220bd7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <h1>Kalender</h1>
-        <div id="selectMonth">
-            <div id="arrowWrapper">
-                <i class="fas fa-chevron-left" id="previousMonth"></i>
-                <i class="fas fa-chevron-right" id="nextMonth"></i>
+    <div id="calendarWrapper">
+        <header>
+            <div id="titleWrapper">
+                <h1>Kalender</h1>
+                <div id="selectMonth">
+                    <div id="arrowWrapper">
+                        <i class="fas fa-chevron-left" id="previousMonth"></i>
+                        <i class="fas fa-chevron-right" id="nextMonth"></i>
+                    </div>
+            
+                    <p id="displayMonth"> &nbsp; </p>
+                </div>
             </div>
     
-            <p id="displayMonth"> &nbsp; </p>
+            <div id="createTerm">
+                <span>Termin hinzufügen</span>
+                <i class="fas fa-plus"></i>
+            </div>
+        </header>
+    
+        <div id="tableWrapper"></div>
+    
+        <div id="overview">
+            <div class="headline">
+                <h2>Terminübersicht</h2>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <div id="tableWrapper"></div>
+    <div id="createTermContainer" class="hide"></div>
 
-    <div id="overview">
-        <div class="headline">
-            <h2>Terminübersicht</h2>
+    <div id="addTermWrapper">
+        <!-- TODO: Implement input fields to get informations about the new term -->
+
+        <i class="fas fa-times" id="close"></i>
+
+        <div id="inputWrapper">
+            <div id="subjectWrapper">
+                <input type="text" placeholder="Termin Bezeichnung" id="dateSubject">
+            </div>
+
+            <div id="dateWrapper">
+                <i class="far fa-clock"></i>
+                <input type="date" id="startDate">
+                <input type="time" id="startTime">
+
+                <p> - </p>
+
+                <input type="date" id="endDate">
+                <input type="time" id="endTime">
+            </div>
+
+            <div id="allDayWrapper">
+                <div id="checkbox">
+                    <i class="fas fa-check"></i>
+                </div>
+
+                <span>Ganztägig</span>
+            </div>
+        </div>
+
+        <div id="submitNewTerm">
+            <span>Speichern</span>
         </div>
     </div>
 </body>
