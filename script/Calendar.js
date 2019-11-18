@@ -9,6 +9,7 @@ class Calendar {
         const displayMonth = document.querySelector('#displayMonth');
         month = new Month(new Date().getMonth() + 1, new Date().getFullYear());
         displayMonth.textContent = getMonthFullName(month.getDate().getMonth() + 1) + ' ' + month.getDate().getFullYear();
+        initInputValues();
     }
 
     nextMonth() {
@@ -80,6 +81,54 @@ class Calendar {
     
         return terms;
     }
+
+    showCreateWindow() {
+        document.querySelector('#createTermContainer').classList.remove('hide');
+        document.querySelector('#calendarWrapper').classList.add('lowOpacity');
+        document.querySelector('#addTermWrapper').classList.add('showCreateWindow');
+
+        handleCheckbox();
+    }
+
+    hideCreateWindow() {
+        document.querySelector('#createTermContainer').classList.add('hide');
+        document.querySelector('#calendarWrapper').classList.remove('lowOpacity');
+        document.querySelector('#addTermWrapper').classList.remove('showCreateWindow');
+
+        setTimeout(() => {
+            initInputValues();
+        }, 110);
+    }
+
+    getSubmittedString() {
+        const subject = document.querySelector('#dateSubject');
+        let startDate = document.querySelector('#startDate');
+        const startTime = document.querySelector('#startTime');
+        let endDate = document.querySelector('#endDate');
+        const endTime = document.querySelector('#endTime');
+        const checkbox = document.querySelector('#checkbox');
+
+        startDate = new Date(startDate.value);
+        endDate = new Date(endDate.value);
+
+        startDate = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
+        endDate = `${endDate.getMonth() + 1}/${endDate.getDate()}/${endDate.getFullYear()}`;
+
+        const output = [subject.value, startDate, startTime.value, endDate, endTime.value, checkbox.checked];
+
+        let submittedString = '';
+
+        for (const elm of output) {
+            submittedString += `${elm};`; 
+        }
+
+        return submittedString.substring(0, submittedString.length - 1);;
+    }
+
+    printCreatedTerm(term) {
+        month.addTerm(term);
+        month.printOverview([term]);
+    }
 }
 
 function getMonthFullName(monthNumber) {
@@ -148,4 +197,62 @@ function getBoolean(string) {
     }
 
     return -1;
+}
+
+function initInputValues() {
+    const dates = [document.querySelector('#startDate'), document.querySelector('#endDate')];
+    const times = [document.querySelector('#startTime'), document.querySelector('#endTime')];
+    
+    const currentDate = new Date();
+
+    document.querySelector('#dateSubject').value = '';
+
+    for (const date of dates) {
+        date.value = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+    }
+
+    if (currentDate.getMinutes() >= 30) {
+        times[0].value = `${currentDate.getHours() + 1}:00`;
+        times[1].value = `${currentDate.getHours() + 2}:00`;
+    } else {
+        times[0].value = `${currentDate.getHours()}:30`;
+        times[1].value = `${currentDate.getHours() + 1}:30`;
+    }
+
+    const checkbox = document.querySelector('#checkbox');
+    checkbox.checked = false;
+    checkbox.style.color = 'white';
+}
+
+function handleCheckbox() {
+    const allDay = document.querySelector('#allDayWrapper');
+    const checkbox = document.querySelector('#checkbox');
+    
+    checkbox.checked = false;
+
+    allDay.addEventListener('click', () => {
+        if (checkbox.checked) {
+            checkbox.checked = false;
+            checkbox.style.color = 'white';
+            toggleTimeInputs(true);
+        } else {
+            checkbox.checked = true;
+            checkbox.style.color = 'black';
+            toggleTimeInputs(false);
+        }
+    });
+
+    function toggleTimeInputs(enable) {
+        const times = [document.querySelector('#startTime'), document.querySelector('#endTime')];
+
+        if (enable) {
+            for (const time of times) {
+                time.readonly = true;
+            }
+        } else {
+            for (const time of times) {
+                time.readonly = false;
+            }
+        }
+    }
 }
