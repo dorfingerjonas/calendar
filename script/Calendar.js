@@ -103,6 +103,8 @@ class Calendar {
             initInputValues();
             document.querySelector('#addTermWrapper').classList.add('hide');
         }, 110);
+
+        handleCheckbox();
     }
 
     getSubmittedString() {
@@ -217,11 +219,11 @@ function initInputValues() {
     }
 
     if (currentDate.getMinutes() >= 30) {
-        times[0].value = `${currentDate.getHours() + 1}:00`;
-        times[1].value = `${currentDate.getHours() + 2}:00`;
+        times[0].value = `${("0" + (currentDate.getHours() + 1)).slice(-2)}:00`;
+        times[1].value = `${("0" + (currentDate.getHours() + 2)).slice(-2)}:00`;
     } else {
-        times[0].value = `${currentDate.getHours()}:30`;
-        times[1].value = `${currentDate.getHours() + 1}:30`;
+        times[0].value = `${("0" + currentDate.getHours()).slice(-2)}:30`;
+        times[1].value = `${("0" + (currentDate.getHours() + 1)).slice(-2)}:30`;
     }
 
     const checkbox = document.querySelector('#checkbox');
@@ -239,11 +241,11 @@ function handleCheckbox() {
         if (checkbox.checked) {
             checkbox.checked = false;
             checkbox.style.color = 'white';
-            toggleTimeInputs(true);
+            toggleTimeInputs(false);
         } else {
             checkbox.checked = true;
             checkbox.style.color = 'black';
-            toggleTimeInputs(false);
+            toggleTimeInputs(true);
         }
     });
 
@@ -252,11 +254,13 @@ function handleCheckbox() {
 
         if (enable) {
             for (const time of times) {
-                time.readonly = true;
+                time.disabled = true;
+                time.style.cursor = 'not-allowed';
             }
         } else {
             for (const time of times) {
-                time.readonly = false;
+                time.disabled = false;
+                time.style.cursor = 'default';
             }
         }
     }
