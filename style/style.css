@@ -401,3 +401,51 @@ header #titleWrapper {
     color: white;
     transition: color 200ms ease-in-out;
 }
+
+#newTermDescription {
+    font-family: 'Roboto', sans-serif;
+    resize: none;
+    outline: none;
+    width: 25vw;
+    height: 10vh;
+    margin: 1vw 0;
+}
+
+/* TermDetailsWrapper */
+#showTermDetailsWrapper {
+    width: 37vw;   
+    height: 37vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 2vh 1vw;
+    background: white;
+    opacity: 0;
+    transform: scale(.6);
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 5px 15px 0px;
+    border-radius: 10px;
+    transition: 100ms left ease-in-out, 100ms opacity ease-in-out, 100ms top ease-in-out;
+    z-index: 100;
+}
+
+#closeDetails {
+    position: absolute;
+    right: 1.5vw;
+    font-size: 2.5vw;
+    cursor: pointer;
+}
+
+#showTermDetailsWrapper h1 {
+    margin: 0;
+}
+
+#showTermDetailsWrapper p {
+    font-size: 1.5vw;
+}
+
+#detailsContent {
+    height: 100%;
+    border-left: #0091f2 .35vw solid;
+    padding: 0 0 0 1vw;
+}

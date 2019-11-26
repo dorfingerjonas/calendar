@@ -107,8 +107,11 @@ class Month {
     addTerm(term) {
         const startDate = term.startDate;
         const startTime = term.startTime;
+        const endDate = term.endDate;
+        const endTime = term.endTime;
         const subject = term.subject;
         const allDay = term.allDay;
+        const description = term.description;
         const tableCell = document.getElementById(`${getShortMonthName(startDate.getMonth() + 1)}${startDate.getDate()}${startDate.getFullYear()}`);       
 
         const newTerm = document.createElement('div');
@@ -134,6 +137,52 @@ class Month {
             newTerm.appendChild(startTimeText);
             newTerm.appendChild(subjectText);
         }
+
+        newTerm.addEventListener('click', (event) => {
+            const detailSubject = document.getElementById('detailSubject');
+            const detailTime = document.getElementById('detailTime');
+            const closeDetails = document.getElementById('closeDetails');
+            const showTermDetailsWrapper = document.getElementById('showTermDetailsWrapper');
+            const detailDescription = document.getElementById('detailDescription');
+
+            if ((event.clientY - 30) <= (window.innerHeight - showTermDetailsWrapper.clientHeight + 50)) {
+                showTermDetailsWrapper.style.top = (event.clientY - 30) + 'px';    
+            } else {    
+                showTermDetailsWrapper.style.top = (window.innerHeight - showTermDetailsWrapper.clientHeight + 30) + 'px';
+            }
+
+            if ((event.clientX - 30) <= (window.innerWidth - showTermDetailsWrapper.clientWidth + 50)) {
+                showTermDetailsWrapper.style.left = (event.clientX - 60) + 'px';    
+            } else {    
+                showTermDetailsWrapper.style.left = (window.innerWidth - showTermDetailsWrapper.clientWidth + 60) + 'px';
+            }
+
+            if (allDay) {
+                if (startDate.getDate() === endDate.getDate() && startDate.getMonth() === endDate.getMonth() && startDate.getFullYear() === endDate.getFullYear()) {
+                    detailTime.textContent = `${startDate.getDate()}.${startDate.getMonth()}.${startDate.getFullYear()} Ganztägig`;
+                } else {
+                    detailTime.textContent = `${startDate.getDate()}.${startDate.getMonth()}.${startDate.getFullYear()} - ${endDate.getDate()}.${endDate.getMonth()}.${endDate.getFullYear()} Ganztägig`;
+                }
+            } else {
+                detailTime.textContent = `${startDate.getDate()}.${startDate.getMonth()}.${startDate.getFullYear()} ${startTime} Uhr - ${endTime} Uhr`;
+            }
+
+            detailSubject.textContent = subject;
+            detailDescription.textContent = description;
+
+            setTimeout(() => {
+                showTermDetailsWrapper.classList.remove('hide');
+                showTermDetailsWrapper.style.opacity = 1;
+            }, 110);
+
+            closeDetails.addEventListener('click', () => {
+                showTermDetailsWrapper.style.opacity = 0;
+                
+                setTimeout(() => {
+                    showTermDetailsWrapper.classList.add('hide');
+                }, 110);
+            });
+        });
         
         tableCell.appendChild(newTerm);
     }

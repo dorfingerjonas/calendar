@@ -14,11 +14,10 @@ if ($req === 'dataRequest') {
         $lineContent = explode(";", $content[$i]);
         $line = [];
         $line[] = $lineContent[0];
-        # $line[] = date("m/d/y H:i", strtotime($lineContent[1] . " " . $lineContent[2]));
-        # $line[] = date("m/d/y H:i", strtotime($lineContent[3] . " " . $lineContent[4]));
         $line[] = $lineContent[1] . " " . $lineContent[2];
         $line[] = $lineContent[3] . " " . $lineContent[4];
         $line[] = strtolower($lineContent[5]);
+        $line[] = strtolower($lineContent[6]);
         $terms[] = $line;
     }
     

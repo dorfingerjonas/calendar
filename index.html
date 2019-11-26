@@ -49,7 +49,7 @@
 
         <div id="inputWrapper">
             <div id="subjectWrapper">
-                <input type="text" placeholder="Termin Bezeichnung" id="dateSubject">
+                <input type="text" placeholder="Terminbezeichnung" id="dateSubject">
             </div>
 
             <div id="dateWrapper">
@@ -70,10 +70,21 @@
 
                 <span>Ganztägig</span>
             </div>
+
+            <textarea id="newTermDescription" maxlength="200" placeholder="Beschreibung"></textarea>
         </div>
 
         <div id="submitNewTerm">
             <span>Speichern</span>
+        </div>
+    </div>
+
+    <div id="showTermDetailsWrapper" class="hide">
+        <div id="detailsContent">
+            <i class="fas fa-times" id="closeDetails"></i>
+            <h1 id="detailSubject"></h1>
+            <p id="detailTime"></p>
+            <p id="detailDescription"></p>
         </div>
     </div>
 </body>

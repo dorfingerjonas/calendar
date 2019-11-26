@@ -83,6 +83,7 @@ class Calendar {
     }
 
     showCreateWindow() {
+        const showTermDetailsWrapper = document.getElementById('showTermDetailsWrapper');
         document.querySelector('#addTermWrapper').classList.remove('hide');
         document.querySelector('#createTermContainer').classList.remove('hide');
 
@@ -90,8 +91,13 @@ class Calendar {
             document.querySelector('#calendarWrapper').classList.add('lowOpacity');
             document.querySelector('#addTermWrapper').classList.add('showCreateWindow');
         }, 25);
-
+        
         handleCheckbox();
+        showTermDetailsWrapper.style.opacity = 0;
+                
+        setTimeout(() => {
+            showTermDetailsWrapper.classList.add('hide');
+        }, 110);
     }
 
     hideCreateWindow() {
@@ -114,6 +120,7 @@ class Calendar {
         let endDate = document.querySelector('#endDate');
         const endTime = document.querySelector('#endTime');
         const checkbox = document.querySelector('#checkbox');
+        const newTermDescription = document.querySelector('#newTermDescription');
 
         startDate = new Date(startDate.value);
         endDate = new Date(endDate.value);
@@ -121,7 +128,7 @@ class Calendar {
         startDate = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
         endDate = `${endDate.getMonth() + 1}/${endDate.getDate()}/${endDate.getFullYear()}`;
 
-        const output = [subject.value, startDate, startTime.value, endDate, endTime.value, checkbox.checked];
+        const output = [subject.value, startDate, startTime.value, endDate, endTime.value, checkbox.checked, newTermDescription.value];
 
         let submittedString = '';
 
